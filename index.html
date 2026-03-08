@@ -187,6 +187,42 @@ body {
   text-align: center; padding: 20px;
   position: relative; z-index: 1;
 }
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-top: 4px;
+}
+.photo-grid img {
+  width: 100%;
+  border-radius: 12px;
+  object-fit: cover;
+  aspect-ratio: 3/4;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px rgba(233,30,99,0.10);
+}
+.photo-grid img:hover { transform: scale(1.03); box-shadow: 0 6px 18px rgba(233,30,99,0.22); }
+.lightbox {
+  display: none;
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.82);
+  z-index: 200;
+  align-items: center;
+  justify-content: center;
+}
+.lightbox.active { display: flex; }
+.lightbox img {
+  max-width: 92vw;
+  max-height: 88vh;
+  border-radius: 16px;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+}
+.lightbox-close {
+  position: absolute; top: 18px; right: 22px;
+  color: white; font-size: 2rem; cursor: pointer;
+  line-height: 1;
+}
 </style>
 </head>
 <body>
@@ -288,8 +324,30 @@ body {
     </div>
   </div>
 
+  <div class="card">
+    <div class="card-icon">📷</div>
+    <div class="card-label">溪宝的样子</div>
+    <div class="photo-grid">
+      <img src="pic/xibao-1.jpg" alt="溪宝" onclick="openLightbox(this)">
+      <img src="pic/xibao-2.jpg" alt="溪宝" onclick="openLightbox(this)">
+      <img src="pic/xibao-3.jpg" alt="溪宝" onclick="openLightbox(this)">
+      <img src="pic/xibao-4.jpg" alt="溪宝" onclick="openLightbox(this)">
+      <img src="pic/xibao-5.jpg" alt="溪宝" onclick="openLightbox(this)">
+      <img src="pic/xibao-6.jpg" alt="溪宝" onclick="openLightbox(this)">
+      <img src="pic/xibao-7.jpg" alt="溪宝" onclick="openLightbox(this)">
+      <img src="pic/xibao-8.jpg" alt="溪宝" onclick="openLightbox(this)">
+      <img src="pic/xibao-9.png" alt="溪宝" onclick="openLightbox(this)">
+      <img src="pic/xibao-10.png" alt="溪宝" onclick="openLightbox(this)">
+    </div>
+  </div>
+
   <div class="footer-text">🌸 由物语亲手做的，只给溪宝 🌸</div>
 
+</div>
+
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <span class="lightbox-close" onclick="closeLightbox()">✕</span>
+  <img id="lightbox-img" src="" alt="">
 </div>
 
 <script>
@@ -357,6 +415,14 @@ function createPetals() {
     p.style.fontSize = (0.8 + Math.random() * 0.8) + 'rem';
     container.appendChild(p);
   }
+}
+
+function openLightbox(img) {
+  document.getElementById('lightbox-img').src = img.src;
+  document.getElementById('lightbox').classList.add('active');
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('active');
 }
 
 let playing = false;
