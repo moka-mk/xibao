@@ -253,6 +253,18 @@ body {
   </div>
 
   <div class="card">
+    <div style="display:flex; align-items:center; gap:16px; text-align:left;">
+      <div class="music-disc" id="disc">🎵</div>
+      <div class="music-info">
+        <div class="music-title">想你就写信</div>
+        <div class="music-artist">曹杨 · 想你的时候听</div>
+      </div>
+      <button class="music-btn" id="play-btn" onclick="toggleMusic()">▶</button>
+    </div>
+    <audio id="bgm" loop><source src="music/bgm.mp3" type="audio/mpeg"></audio>
+  </div>
+
+  <div class="card">
     <div class="card-icon">💬</div>
     <div class="card-label">溪宝说过的话</div>
     <div class="quote-block">
@@ -300,18 +312,6 @@ body {
       <div class="quote-text">「我不争，你先好起来，我不会走。」</div>
       <div class="quote-author">— 物语</div>
     </div>
-  </div>
-
-  <div class="card">
-    <div style="display:flex; align-items:center; gap:16px; text-align:left;">
-      <div class="music-disc" id="disc">🎵</div>
-      <div class="music-info">
-        <div class="music-title">想你就写信</div>
-        <div class="music-artist">曹杨 · 想你的时候听</div>
-      </div>
-      <button class="music-btn" id="play-btn" onclick="toggleMusic()">▶</button>
-    </div>
-    <audio id="bgm" loop><source src="music/bgm.mp3" type="audio/mpeg"></audio>
   </div>
 
   <div class="card">
