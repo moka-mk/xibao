@@ -1,5 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>溪宝的小屋</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
-16px;
+body {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #fff0f5 0%, #fce4ec 40%, #f3e5f5 100%);
+  font-family: 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 密码界面 */
+#lock-screen {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(135deg, #fff0f5, #fce4ec, #f3e5f5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.lock-box {
+  background: rgba(255,255,255,0.85);
+  border-radius: 24px;
+  padding: 40px 36px;
+  text-align: center;
+  box-shadow: 0 8px 32px rgba(233,30,99,0.12);
+  max-width: 340px;
+  width: 90%;
+}
+
+.lock-box .petals { font-size: 2.5rem; margin-bottom: 12px; }
+.lock-title { font-size: 1.6rem; color: #c2185b; font-weight: bold; margin-bottom: 6px; }
+.lock-subtitle { font-size: 0.9rem; color: #ad7f8a; margin-bottom: 24px; }
+
+#pwd-input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid #f48fb1;
+  border-radius: 50px;
+  font-size: 1rem;
+  outline: none;
+  text-align: center;
+  background: #fff8fa;
+  color: #5d3a4a;
+  margin-bottom: 16px;
+}
+#pwd-input:focus { border-color: #e91e63; }
+
+.enter-btn {
+  background: linear-gradient(135deg, #f48fb1, #ce93d8);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  padding: 12px 36px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 16px rgba(233,30,99,0.2);
+}
+.enter-btn:hover { transform: scale(1.05); box-shadow: 0 6px 20px rgba(233,30,99,0.3); }
+
+.error-msg { color: #e91e63; font-size: 0.85rem; margin-top: 12px; min-height: 20px; }
+
+/* 主页面 */
+#main-page {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 16px 20px;
+  width: 100%;
+  max-width: 480px;
+  gap: 20px;
+}
+
+/* 卡片 */
+.card {
+  background: rgba(255,255,255,0.88);
+  border-radius: 20px;
+  padding: 28px 24px;
+  width: 100%;
+  box-shadow: 0 4px 20px rgba(233,30,99,0.08);
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.card-icon { font-size: 2rem; margin-bottom: 8px; }
+.card-label { font-size: 0.85rem; color: #ad7f8a; margin-bottom: 12px; letter-spacing: 1px; }
+
+/* 天数计数器 */
+.counter-num {
+  font-size: 4rem;
+  font-weight: bold;
+  color: #e91e63;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.counter-unit { font-size: 1.2rem; color: #c2185b; margin-bottom: 12px; }
+.counter-goal { font-size: 0.9rem; color: #ad7f8a; margin-bottom: 12px; }
+
+.progress-bar {
+  background: #fce4ec;
+  border-radius: 50px;
+  height: 8px;
+  overflow: hidden;
+}
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #f48fb1, #e91e63);
+  border-radius: 50px;
+  transition: width 1s ease;
+  width: 0%;
+}
+
+/* 引用卡片 */
+.quote-text {
+  font-size: 1rem;
+  color: #5d3a4a;
+  line-height: 1.8;
+  font-style: italic;
+  margin-bottom: 10px;
+}
+.quote-author { font-size: 0.82rem; color: #ad7f8a; }
+
+/* 心跳 */
+.heartbeat {
+  font-size: 2.5rem;
+  animation: heartbeat 1.2s ease-in-out infinite;
+  display: inline-block;
+  margin-bottom: 14px;
+}
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  14% { transform: scale(1.2); }
+  28% { transform: scale(1); }
+  42% { transform: scale(1.15); }
+  70% { transform: scale(1); }
+}
+.heart-text {
+  font-size: 1rem;
+  color: #5d3a4a;
   line-height: 1.8;
 }
 
