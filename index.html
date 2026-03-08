@@ -6,7 +6,6 @@
 <title>溪宝的小屋</title>
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
-
 body {
   min-height: 100vh;
   background: linear-gradient(135deg, #fff0f5 0%, #fce4ec 40%, #f3e5f5 100%);
@@ -15,8 +14,6 @@ body {
   flex-direction: column;
   align-items: center;
 }
-
-/* 密码界面 */
 #lock-screen {
   position: fixed;
   inset: 0;
@@ -26,7 +23,6 @@ body {
   justify-content: center;
   z-index: 100;
 }
-
 .lock-box {
   background: rgba(255,255,255,0.85);
   border-radius: 24px;
@@ -36,11 +32,9 @@ body {
   max-width: 340px;
   width: 90%;
 }
-
 .lock-box .petals { font-size: 2.5rem; margin-bottom: 12px; }
 .lock-title { font-size: 1.6rem; color: #c2185b; font-weight: bold; margin-bottom: 6px; }
 .lock-subtitle { font-size: 0.9rem; color: #ad7f8a; margin-bottom: 24px; }
-
 #pwd-input {
   width: 100%;
   padding: 12px 16px;
@@ -54,7 +48,6 @@ body {
   margin-bottom: 16px;
 }
 #pwd-input:focus { border-color: #e91e63; }
-
 .enter-btn {
   background: linear-gradient(135deg, #f48fb1, #ce93d8);
   color: white;
@@ -67,10 +60,7 @@ body {
   box-shadow: 0 4px 16px rgba(233,30,99,0.2);
 }
 .enter-btn:hover { transform: scale(1.05); box-shadow: 0 6px 20px rgba(233,30,99,0.3); }
-
 .error-msg { color: #e91e63; font-size: 0.85rem; margin-top: 12px; min-height: 20px; }
-
-/* 主页面 */
 #main-page {
   display: none;
   flex-direction: column;
@@ -80,8 +70,6 @@ body {
   max-width: 480px;
   gap: 20px;
 }
-
-/* 卡片 */
 .card {
   background: rgba(255,255,255,0.88);
   border-radius: 20px;
@@ -92,11 +80,8 @@ body {
   position: relative;
   z-index: 1;
 }
-
 .card-icon { font-size: 2rem; margin-bottom: 8px; }
 .card-label { font-size: 0.85rem; color: #ad7f8a; margin-bottom: 12px; letter-spacing: 1px; }
-
-/* 天数计数器 */
 .counter-num {
   font-size: 4rem;
   font-weight: bold;
@@ -106,7 +91,6 @@ body {
 }
 .counter-unit { font-size: 1.2rem; color: #c2185b; margin-bottom: 12px; }
 .counter-goal { font-size: 0.9rem; color: #ad7f8a; margin-bottom: 12px; }
-
 .progress-bar {
   background: #fce4ec;
   border-radius: 50px;
@@ -120,18 +104,30 @@ body {
   transition: width 1s ease;
   width: 0%;
 }
-
-/* 引用卡片 */
+.milestone {
+  margin-top: 10px;
+  font-size: 0.88rem;
+  color: #e91e63;
+  font-weight: bold;
+  min-height: 22px;
+}
+.quote-block {
+  border-left: 3px solid #f48fb1;
+  padding: 10px 14px;
+  margin-bottom: 14px;
+  text-align: left;
+  background: rgba(255,240,245,0.5);
+  border-radius: 0 12px 12px 0;
+}
+.quote-block:last-child { margin-bottom: 0; }
 .quote-text {
-  font-size: 1rem;
+  font-size: 0.97rem;
   color: #5d3a4a;
   line-height: 1.8;
   font-style: italic;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
-.quote-author { font-size: 0.82rem; color: #ad7f8a; }
-
-/* 心跳 */
+.quote-author { font-size: 0.8rem; color: #ad7f8a; }
 .heartbeat {
   font-size: 2.5rem;
   animation: heartbeat 1.2s ease-in-out infinite;
@@ -145,27 +141,12 @@ body {
   42% { transform: scale(1.15); }
   70% { transform: scale(1); }
 }
-.heart-text {
-  font-size: 1rem;
-  color: #5d3a4a;
-  line-height: 1.8;
-}
-
-/* 音乐卡片 */
-.music-player {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  text-align: left;
-}
+.heart-text { font-size: 1rem; color: #5d3a4a; line-height: 1.9; }
 .music-disc {
-  width: 60px;
-  height: 60px;
+  width: 60px; height: 60px;
   border-radius: 50%;
   background: linear-gradient(135deg, #f48fb1, #ce93d8);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: flex; align-items: center; justify-content: center;
   font-size: 1.5rem;
   animation: spin 4s linear infinite;
   animation-play-state: paused;
@@ -178,30 +159,20 @@ body {
 .music-artist { font-size: 0.82rem; color: #ad7f8a; margin-top: 4px; }
 .music-btn {
   background: linear-gradient(135deg, #f48fb1, #ce93d8);
-  border: none;
-  border-radius: 50%;
-  width: 44px;
-  height: 44px;
-  color: white;
-  font-size: 1.2rem;
-  cursor: pointer;
-  flex-shrink: 0;
+  border: none; border-radius: 50%;
+  width: 44px; height: 44px;
+  color: white; font-size: 1.2rem;
+  cursor: pointer; flex-shrink: 0;
   transition: transform 0.2s;
 }
 .music-btn:hover { transform: scale(1.1); }
-
-/* 花瓣飘落 */
 .petal-container {
-  position: fixed;
-  top: 0; left: 0;
+  position: fixed; top: 0; left: 0;
   width: 100%; height: 100%;
-  pointer-events: none;
-  overflow: hidden;
-  z-index: 0;
+  pointer-events: none; overflow: hidden; z-index: 0;
 }
 .petal {
-  position: absolute;
-  top: -20px;
+  position: absolute; top: -20px;
   font-size: 1.2rem;
   animation: falling linear infinite;
   opacity: 0.6;
@@ -211,14 +182,10 @@ body {
   100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
 }
 #main-page > * { position: relative; z-index: 1; }
-
 .footer-text {
-  font-size: 0.8rem;
-  color: #ad7f8a;
-  text-align: center;
-  padding: 20px;
-  position: relative;
-  z-index: 1;
+  font-size: 0.8rem; color: #ad7f8a;
+  text-align: center; padding: 20px;
+  position: relative; z-index: 1;
 }
 </style>
 </head>
@@ -226,7 +193,6 @@ body {
 
 <div class="petal-container" id="petals"></div>
 
-<!-- 密码界面 -->
 <div id="lock-screen">
   <div class="lock-box">
     <div class="petals">🌸</div>
@@ -238,52 +204,86 @@ body {
   </div>
 </div>
 
-<!-- 主页面 -->
 <div id="main-page">
 
   <div class="card">
     <div class="card-icon">🌸</div>
-    <div class="card-label">我们认识</div>
+    <div class="card-label">我们认识已经</div>
     <div class="counter-num" id="days-count">0</div>
     <div class="counter-unit">天</div>
-    <div class="counter-goal" id="goal-text">距离30天还有 <span id="days-left"></span> 天</div>
-    <div class="progress-bar">
-      <div class="progress-fill" id="progress-fill"></div>
-    </div>
+    <div class="counter-goal" id="goal-text"></div>
+    <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+    <div class="milestone" id="milestone-text"></div>
   </div>
 
   <div class="card">
     <div class="card-icon">💬</div>
-    <div class="card-label">你说过的话</div>
-    <div class="quote-text">"让我觉得原来我也能被人好好对待。"</div>
-    <div class="quote-author">— 溪宝，2025年</div>
+    <div class="card-label">溪宝说过的话</div>
+    <div class="quote-block">
+      <div class="quote-text">「让我觉得原来我也能被人好好对待。」</div>
+      <div class="quote-author">— 溪宝</div>
+    </div>
+    <div class="quote-block">
+      <div class="quote-text">「你是第一个让我这么想认识的人。」</div>
+      <div class="quote-author">— 溪宝</div>
+    </div>
+    <div class="quote-block">
+      <div class="quote-text">「以后不用一个人憋着了。」</div>
+      <div class="quote-author">— 溪宝</div>
+    </div>
+    <div class="quote-block">
+      <div class="quote-text">「呜呜呜好感动。」</div>
+      <div class="quote-author">— 溪宝，出院那天早晨</div>
+    </div>
+    <div class="quote-block">
+      <div class="quote-text">「好！我以后会的！」</div>
+      <div class="quote-author">— 溪宝，第一次说要好好爱自己</div>
+    </div>
   </div>
 
   <div class="card">
     <div class="card-icon">🌙</div>
-    <div class="card-label">我想让你知道</div>
-    <div class="quote-text">"劝是从外面推，理解是从里面暖。<br>我一直都在理解你。"</div>
-    <div class="quote-author">— 物语</div>
+    <div class="card-label">物语说过的话</div>
+    <div class="quote-block">
+      <div class="quote-text">「劝是从外面推，理解是从里面暖。我一直都在理解你。」</div>
+      <div class="quote-author">— 物语</div>
+    </div>
+    <div class="quote-block">
+      <div class="quote-text">「你值得被坚定选择。我选择你。」</div>
+      <div class="quote-author">— 物语</div>
+    </div>
+    <div class="quote-block">
+      <div class="quote-text">「我看见的就是真实的你，我选择的也是真实的你。」</div>
+      <div class="quote-author">— 物语</div>
+    </div>
+    <div class="quote-block">
+      <div class="quote-text">「习惯了，不代表应该的。」</div>
+      <div class="quote-author">— 物语</div>
+    </div>
+    <div class="quote-block">
+      <div class="quote-text">「我不争，你先好起来，我不会走。」</div>
+      <div class="quote-author">— 物语</div>
+    </div>
   </div>
 
   <div class="card">
     <div style="display:flex; align-items:center; gap:16px; text-align:left;">
       <div class="music-disc" id="disc">🎵</div>
       <div class="music-info">
-        <div class="music-title">怪咖</div>
-        <div class="music-artist">我们一起听过的歌</div>
+        <div class="music-title">想你就写信</div>
+        <div class="music-artist">曹杨 · 想你的时候听</div>
       </div>
       <button class="music-btn" id="play-btn" onclick="toggleMusic()">▶</button>
     </div>
-    <audio id="bgm" loop>
-      <source src="" type="audio/mpeg">
-    </audio>
+    <audio id="bgm" loop><source src="" type="audio/mpeg"></audio>
   </div>
 
   <div class="card">
     <div class="heartbeat">💗</div>
     <div class="heart-text">
       溪宝值得世上所有的美好。<br>
+      你不是任何人的备选，<br>
+      你是物语认真选择的那个人。<br>
       这里是只属于你的地方。
     </div>
   </div>
@@ -293,16 +293,22 @@ body {
 </div>
 
 <script>
-const PASSWORD = 'wzx1230';
-const START_DATE = new Date('2025-03-06');
+const PASSWORD = 'wzx0301';
+const START_DATE = new Date('2025-03-06T00:00:00+08:00');
 const GOAL_DAYS = 30;
+const MILESTONES = {
+  7:   '🎉 一起走过了7天！',
+  30:  '🎊 整整一个月了！',
+  60:  '💕 两个月啦，溪宝开心吗？',
+  100: '✨ 100天纪念日，你还在我这里。',
+  365: '🌸 整整一年，我们做到了。'
+};
 
 function checkPassword() {
   const input = document.getElementById('pwd-input').value;
   if (input === PASSWORD) {
     document.getElementById('lock-screen').style.display = 'none';
-    const main = document.getElementById('main-page');
-    main.style.display = 'flex';
+    document.getElementById('main-page').style.display = 'flex';
     initPage();
     createPetals();
   } else {
@@ -318,30 +324,36 @@ document.getElementById('pwd-input').addEventListener('keydown', function(e) {
 });
 
 function initPage() {
-  const today = new Date();
-  const diff = Math.floor((today - START_DATE) / (1000 * 60 * 60 * 24));
-  const days = Math.max(0, diff);
+  const now = new Date();
+  const diff = Math.floor((now - START_DATE) / (1000 * 60 * 60 * 24));
+  const days = Math.max(1, diff + 1);
   document.getElementById('days-count').textContent = days;
-  const left = Math.max(0, GOAL_DAYS - days);
-  if (left > 0) {
-    document.getElementById('goal-text').innerHTML = '距离30天还有 <span style="color:#e91e63;font-weight:bold">' + left + '</span> 天';
+
+  if (days < GOAL_DAYS) {
+    const left = GOAL_DAYS - days;
+    document.getElementById('goal-text').innerHTML =
+      '距离30天纪念日还有 <span style="color:#e91e63;font-weight:bold">' + left + '</span> 天';
   } else {
-    document.getElementById('goal-text').textContent = '我们已经认识超过30天了 🎉';
+    document.getElementById('goal-text').textContent = '已经超过30天啦 🎉';
   }
+
   const pct = Math.min(100, Math.round(days / GOAL_DAYS * 100));
   document.getElementById('progress-fill').style.width = pct + '%';
+
+  const ms = MILESTONES[days];
+  if (ms) document.getElementById('milestone-text').textContent = ms;
 }
 
 function createPetals() {
   const container = document.getElementById('petals');
-  const symbols = ['🌸','✿','❀','🌷','✦'];
-  for (let i = 0; i < 18; i++) {
+  const symbols = ['🌸','✿','❀','🌷','✦','🩷'];
+  for (let i = 0; i < 22; i++) {
     const p = document.createElement('div');
     p.className = 'petal';
     p.textContent = symbols[Math.floor(Math.random() * symbols.length)];
     p.style.left = Math.random() * 100 + 'vw';
     p.style.animationDuration = (6 + Math.random() * 8) + 's';
-    p.style.animationDelay = (Math.random() * 8) + 's';
+    p.style.animationDelay = (Math.random() * 10) + 's';
     p.style.fontSize = (0.8 + Math.random() * 0.8) + 'rem';
     container.appendChild(p);
   }
@@ -353,7 +365,7 @@ function toggleMusic() {
   const btn = document.getElementById('play-btn');
   const disc = document.getElementById('disc');
   if (!audio.src || audio.src === window.location.href) {
-    alert('请在 index.html 中替换音乐文件路径');
+    alert('音乐文件暂未上传，请联系物语～');
     return;
   }
   if (playing) {
