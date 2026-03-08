@@ -430,10 +430,6 @@ function toggleMusic() {
   const audio = document.getElementById('bgm');
   const btn = document.getElementById('play-btn');
   const disc = document.getElementById('disc');
-  if (!audio.src || audio.src === window.location.href) {
-    alert('音乐文件暂未上传，请联系物语～');
-    return;
-  }
   if (playing) {
     audio.pause();
     btn.textContent = '▶';
